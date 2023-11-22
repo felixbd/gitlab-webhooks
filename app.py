@@ -15,7 +15,7 @@ def webhook():
 
     # Print the commit message to stdout
     print(f"Received GitLab webhook. Commit message: {commit_message}")
-    subprocess.run(["espeak", commit_message])
+    # subprocess.run(["espeak", commit_message])
 
     return jsonify({'status': 'success'})
 
