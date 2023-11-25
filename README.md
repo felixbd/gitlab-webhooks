@@ -31,5 +31,5 @@ flask run
 ## test via curl
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '{"message": "Example commit message"}' http://localhost:5000/webhook
+curl -X POST -H "Content-Type: application/json" -d '{"object_kind": "push", "message": "Example commit message"}' http://localhost:5000/webhook
 ```
