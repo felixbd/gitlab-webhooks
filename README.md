@@ -1,5 +1,6 @@
 # gitlab-webhooks
 
+## `docker` setup via `nix-build` (currently broken ...)
 
 ```shell
 nix-build docker.nix -o result
@@ -17,15 +18,17 @@ docker images | grep gitlab-webhooks-server
 docker run -it -v $(pwd)/app.py:/app.py -p 5000:5000 gitlab-webhooks-server:latest flask run --host=0.0.0.0
 ```
 
----
+## `nix-shell` setup
 
 ```shell
 nix-shell
 ```
 
 ```shell
-python3 main.py
+flask run
 ```
+
+## test via curl
 
 ```shell
 curl -X POST -H "Content-Type: application/json" -d '{"message": "Example commit message"}' http://localhost:5000/webhook

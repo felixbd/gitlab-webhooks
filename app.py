@@ -2,9 +2,15 @@
 #-*- coding: utf-8 -*-
 
 from flask import Flask, request, jsonify
-import subprocess
+# import subprocess
+import pyttsx3
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+   return "Hello, World!"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -14,8 +20,9 @@ def webhook():
     commit_message = data.get('message', 'No commit message')
 
     # Print the commit message to stdout
-    print(f"Received GitLab webhook. Commit message: {commit_message}")
+    print(f"\033[36mReceived GitLab webhook. Commit message:\033[0m {commit_message}")
     # subprocess.run(["espeak", commit_message])
+    pyttsx3.speak(f"COMMIT MESSAGE: {commit_message}")
 
     return jsonify({'status': 'success'})
 
